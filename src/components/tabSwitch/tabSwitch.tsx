@@ -59,9 +59,9 @@ const TabSwitch = ({
           >
             {option}
           </p>
-          {i < options.length - 1 && (
+          {/* {i < options.length - 1 && (
             <div className={`tab-swtich__separator-${type}`} />
-          )}
+          )} */}
         </>
       ))}
     </div>

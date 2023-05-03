@@ -1,22 +1,26 @@
 $color-outline: rgb(107, 102, 102);
 $color-text: rgb(255, 255, 255);
-$color-background: rgb(56, 54, 54);
-$color-selected: rgb(76, 70, 70);
+
+$color-selected: rgb(93, 85, 85);
+$color-background: rgb(69, 63, 63);
 $radius: 4px;
+$global-padding: 2px;
 * {
   font-size: 12px;
   font-family: Arial, Helvetica, sans-serif;
 }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 .tab-switch {
-  * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-
+  // width: auto;
+  padding: $global-padding;
   display: flex;
-  outline: 1px solid $color-outline;
-  background-color: $color-background;
+  gap: $global-padding;
+  // outline: 1px solid $color-outline;
+  background-color: rgb(46, 44, 44);
   color: $color-text;
   border-radius: $radius;
   align-items: center;
@@ -42,6 +46,7 @@ $radius: 4px;
     flex-direction: column;
   }
   .tab-swtich__option {
+    background-color: $color-background;
     border-radius: $radius;
     padding: 8px;
     height: 100%;
@@ -49,7 +54,7 @@ $radius: 4px;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex: 0 0 50%;
+    flex: 1 1 auto;
     text-align: center;
     white-space: nowrap;
 
