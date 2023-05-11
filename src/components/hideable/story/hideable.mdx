@@ -1,0 +1,49 @@
+{/* Checkbox.mdx */}
+
+import { Canvas, Meta, Controls, Description, Story } from "@storybook/blocks";
+
+import * as HideableStories from "./hideable.stories.tsx";
+
+<Meta of={HideableStories} />
+
+# Hideable
+
+A text input with hideable content
+
+## Visibility
+
+### Visible
+
+<Canvas of={HideableStories.Visible} />
+### Hidden
+<Canvas of={HideableStories.Hidden} />
+
+## Visibility switch
+
+### With visibility switch
+
+<Canvas of={HideableStories.WithVisibilitySwitch} />
+
+### Without visibility switch
+
+<Canvas of={HideableStories.WithoutVisibilitySwitch} />
+
+## Theming
+
+### Light
+
+<Canvas of={HideableStories.Light} />
+### Dark
+<Canvas of={HideableStories.Dark} />
+
+## Focus
+
+### Focused
+
+<Canvas of={HideableStories.Focused} />
+### Unfocused
+<Canvas of={HideableStories.Unfocused} />
+
+## Interactive
+
+<Canvas of={HideableStories.Dev} />

@@ -1,0 +1,82 @@
+$theme-dark: (
+  --color-primary: #ffffff,
+  --color-secondary: rgb(154, 160, 166),
+  --color-disabled: rgb(196, 198, 201),
+  --color-bg: rgb(51, 46, 46),
+  --color-accent: rgb(2, 156, 253),
+);
+$theme-light: (
+  --color-primary: #000000,
+  --color-secondary: rgb(101, 106, 110),
+  --color-disabled: rgb(125, 129, 136),
+  --color-bg: rgb(236, 226, 226),
+  --color-accent: rgb(2, 111, 253),
+);
+
+@mixin spread-map($map: ()) {
+  @each $key, $value in $map {
+    #{$key}: $value;
+  }
+}
+
+.hideable {
+  width: 300px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+
+  &.hideable[data-theme="dark"] {
+    @include spread-map($theme-dark);
+  }
+
+  &.hideable[data-theme="light"] {
+    @include spread-map($theme-light);
+  }
+  .hideable__input-wrapper {
+    flex: 1 1 auto;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+    background-color: var(--color-bg);
+    flex-direction: column;
+    border-radius: 4px;
+
+    .hideable__input {
+      width: 100%;
+      color: var(--color-primary);
+      padding: 8px;
+      &::placeholder {
+        color: var(--color-disabled);
+      }
+      &:read-only {
+        color: var(--color-disabled);
+      }
+      &:focus {
+        outline: none;
+      }
+    }
+
+    .hideable__underline {
+      position: absolute;
+      bottom: 0;
+      background-color: var(--color-accent);
+      // border-radius: 0 0 2px 2px;
+      height: 2px;
+      opacity: 0;
+      width: 0;
+      display: flex;
+      transition: opacity 120ms ease-in, width 180ms ease-out;
+      &.hideable__underline-visible {
+        width: 100%;
+        opacity: 1;
+      }
+    }
+  }
+
+  // .hideable__visibility-switch {
+  //   display: flex;
+  //   justify-content: center;
+  //   align-items: center;
+  // }
+}
