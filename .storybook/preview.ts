@@ -1,7 +1,7 @@
 import type { Preview } from "@storybook/react";
 import "@/reset.scss";
+import "@/colors.scss";
 import "@/global.scss";
-
 const preview: Preview = {
   parameters: {
     actions: { argTypesRegex: "^on[A-Z].*" },
