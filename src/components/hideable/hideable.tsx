@@ -2,8 +2,9 @@ import React, { useEffect, useRef } from "react";
 import "./hideable.scss";
 import { Eye, EyeOff } from "react-feather";
 
+type Theme = "dark" | "light";
 interface HideableProps {
-  theme?: "light" | "dark";
+  theme?: Theme;
   value: string;
   visible: boolean;
   focused?: boolean;
