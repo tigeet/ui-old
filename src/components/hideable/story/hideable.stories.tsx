@@ -6,6 +6,10 @@ const meta = {
   title: "Hideable",
   component: Hideable,
   argTypes: {
+    focusType: {
+      options: ["none", "underline", "outline"],
+      control: { type: "select" },
+    },
     theme: {
       options: ["light", "dark"],
       control: { type: "select" },
@@ -102,7 +106,7 @@ const Unfocused = {
   },
 } satisfies Story;
 
-const Stateful = ({ theme, placeholder }: Args) => {
+const Stateful = (args: Partial<Args>) => {
   const [value, setValue] = useState<string>("");
   const [visible, setVisible] = useState<boolean>(true);
   const [editable, setEditable] = useState<boolean>(false);
@@ -110,14 +114,13 @@ const Stateful = ({ theme, placeholder }: Args) => {
   const toggleEditable = () => setEditable((state) => !state);
   return (
     <Hideable
-      theme={theme}
       value={value}
       visible={visible}
-      placeholder={placeholder}
       focused={editable}
       onValueChange={setValue}
       toggleVisible={toggleVisible}
       toggleFocused={toggleEditable}
+      {...args}
     />
   );
 };

@@ -1,19 +1,14 @@
 import React, { useEffect, useRef } from "react";
 import "./hideable.scss";
 import { Eye, EyeOff } from "react-feather";
+import Input, { InputProps } from "../input/input";
 
-type Theme = "dark" | "light";
-interface HideableProps {
-  theme?: Theme;
-  value: string;
-  visible: boolean;
-  focused?: boolean;
-  placeholder?: string;
-  onValueChange?: (value: string) => void;
+type OwnProps = {
   toggleVisible?: () => void;
-  toggleFocused?: () => void;
-}
+  visible: boolean;
+};
 
+type HideableProps = OwnProps & InputProps;
 const Hideable = ({
   theme = "dark",
   value,
@@ -23,35 +18,27 @@ const Hideable = ({
   onValueChange,
   toggleVisible,
   toggleFocused,
+  className,
+  focusType = "none",
+  disabled = false,
+  type = "text",
+  onSubmit,
 }: HideableProps) => {
-  const handleBlur = (e: React.FocusEvent) => {
-    if (e.currentTarget.contains(e.relatedTarget)) return;
-    focused && toggleFocused?.();
-  };
-  const handleFocus = (e) => {
-    !focused && toggleFocused?.();
-  };
   const displayVisibilitySwitch = toggleVisible !== undefined;
   return (
     <div tabIndex={0} className="hideable" data-theme={theme}>
-      <div className="hideable__input-wrapper">
-        <input
-          onFocus={handleFocus}
-          onBlur={handleBlur}
-          type={visible ? "text" : "password"}
-          className="hideable__input cursor-pointer"
-          value={value}
-          placeholder={placeholder}
-          readOnly={!focused}
-          onChange={(e) => onValueChange?.(e.target.value)}
-        />
-        <div
-          className={[
-            "hideable__underline",
-            `hideable__underline-${focused ? "visible" : "hidden"}`,
-          ].join(" ")}
-        />
-      </div>
+      <Input
+        theme={theme}
+        className="hideable__input cursor-pointer"
+        onValueChange={onValueChange}
+        focused={focused}
+        toggleFocused={toggleFocused}
+        type={visible ? "text" : "password"}
+        value={value}
+        focusType={focusType}
+        placeholder={placeholder}
+      />
+
       {displayVisibilitySwitch && (
         <div
           className="hideable__visibility-switch centered"
