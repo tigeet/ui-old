@@ -50,6 +50,7 @@ const DevStateful = (args) => {
 
 const Dev = {
   args: {
+    disabled: false,
     focusType: "outline",
     theme: "light",
   },

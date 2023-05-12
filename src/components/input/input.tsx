@@ -1,15 +1,16 @@
 import React, { useEffect, useRef } from "react";
-import { cls } from "@koido/cls/dist/src/cls";
+import { cls } from "@koido/cls/dist/cls";
 import "./input.scss";
 import { Search } from "react-feather";
 
 type Theme = "light" | "dark";
 type FocusType = "underline" | "none" | "outline";
-interface InputProps {
+type InputProps = {
+  className?: string;
   value: string;
   focusType?: FocusType;
   onValueChange?: (value: string) => void;
-  focusable?: boolean;
+  // focusable?: boolean;
   disabled?: boolean;
   focused?: boolean;
   toggleFocused?: () => void;
@@ -19,13 +20,13 @@ interface InputProps {
   onSubmit?: (value: string) => void;
   preIcon?: (theme: Theme) => React.ReactNode;
   postIcon?: (theme: Theme) => React.ReactNode;
-}
+};
 const Input = ({
+  className,
   value,
   focusType = "none",
   theme = "light",
   onValueChange,
-  focusable = true,
   disabled = false,
   focused = false,
   toggleFocused,
@@ -40,7 +41,7 @@ const Input = ({
     focused && toggleFocused?.();
   };
   const handleFocus = () => {
-    !focused && toggleFocused?.();
+    !disabled && !focused && toggleFocused?.();
   };
   const handleValueChange = (e: React.ChangeEvent<HTMLInputElement>) =>
     onValueChange?.(e.target.value ?? "");
@@ -52,7 +53,7 @@ const Input = ({
   return (
     <div
       // className="input"
-      className={cls("input", {
+      className={cls("input", className, {
         "input-focused": focused,
         "focus-outline": focusType === "outline",
         "focus-none": focusType === "none",
@@ -79,7 +80,7 @@ const Input = ({
           className="input__input"
           value={value}
           placeholder={placeholder}
-          readOnly={!focused}
+          readOnly={disabled || !focused}
           onChange={handleValueChange}
           onSubmit={handleSubmit}
         />
