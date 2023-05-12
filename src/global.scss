@@ -19,3 +19,18 @@
   justify-content: center;
   align-items: center;
 }
+
+.spaced {
+  display: flex;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.focus-outline {
+  border-color: var(--color-accent);
+}
+
+.focus-none {
+  border: none;
+  outline: none;
+}
