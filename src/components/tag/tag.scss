@@ -1,0 +1,35 @@
+.tag {
+  $pad-v: 4px;
+  $pad-h: 12px;
+  width: fit-content;
+  padding: $pad-v $pad-h;
+  gap: $pad-h;
+  &.tag-rounded {
+    border-radius: 10000px;
+  }
+
+  &.tag-rectangle {
+    border-radius: 4px;
+  }
+
+  &.tag-outlined {
+    background-color: transparent;
+    outline: 1px solid var(--color-accent);
+
+    .tag__value {
+      color: var(--color-accent);
+    }
+  }
+  &.tag-filled {
+    background-color: var(--color-bg);
+    .tag__value {
+      color: var(--color-primary);
+    }
+  }
+  .tag__value {
+    flex: 1 1 auto;
+  }
+  .tag__icon {
+    flex: 0 0 auto;
+  }
+}
