@@ -1,6 +1,8 @@
 import React from "react";
-import { useState } from "react";
 import "./tabSwitch.scss";
+import useTabSwitch from "./useTabSwitch";
+import { Options, Theme } from "./types";
+import { Prettier } from "../../typeUtils";
 
 // Layout orientation of the tabSwitch, default to horizontal;
 type TabSwitchType = "horizontal" | "vertical";
@@ -11,12 +13,14 @@ interface TabSwitchStyles {
 }
 interface TabSwitchAction {
   className?: string;
+  theme: Theme;
   type?: TabSwitchType;
-  options: [string, string];
+  options: Options;
   onOptionSwitch?: (string: TabSwitchAction["options"][number]) => void;
 }
 
-type TabSwitchProps = TabSwitchStyles & TabSwitchAction;
+type TabSwitchProps = Prettier<TabSwitchStyles & TabSwitchAction>;
+
 const buildStyles = (styles: TabSwitchStyles) => {
   const keys = Object.keys(styles) as (keyof TabSwitchStyles)[];
   const obj: Record<string, string> = {};
@@ -33,18 +37,19 @@ const TabSwitch = ({
   type = "horizontal",
   width,
   height,
+  theme = "light",
 }: TabSwitchProps) => {
-  const [selected, setSelected] = useState<number>(0);
+  const [selected, setSelected] = useTabSwitch({ options });
 
-  const handleSelectOption = (i: number) => {
-    onOptionSwitch?.(options[i]);
-    setSelected(i);
-    console.log(":))");
+  const handleSelectOption = (option: string) => {
+    onOptionSwitch?.(option);
+    setSelected(option);
   };
   return (
     <div
       className={["tab-switch", `tab-switch-${type}`, className].join(" ")}
       style={buildStyles({ width: width, height: height })}
+      data-theme={theme}
     >
       {options.map((option, i) => (
         <>
@@ -55,7 +60,7 @@ const TabSwitch = ({
               selected === i ? "tab-swtich__option-selected" : "",
             ].join(" ")}
             key={i}
-            onClick={() => handleSelectOption(i)}
+            onClick={() => handleSelectOption(option)}
           >
             {option}
           </p>

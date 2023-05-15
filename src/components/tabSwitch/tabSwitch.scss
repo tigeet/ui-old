@@ -1,10 +1,3 @@
-$color-outline: rgb(107, 102, 102);
-$color-text: rgb(255, 255, 255);
-
-$color-selected: rgb(93, 85, 85);
-$color-background: rgb(69, 63, 63);
-$radius: 4px;
-$global-padding: 2px;
 * {
   font-size: 12px;
   font-family: Arial, Helvetica, sans-serif;
@@ -15,13 +8,15 @@ $global-padding: 2px;
   padding: 0;
 }
 .tab-switch {
+  $global-padding: 2px;
+  $radius: 4px;
   // width: auto;
   padding: $global-padding;
   display: flex;
   gap: $global-padding;
-  // outline: 1px solid $color-outline;
-  background-color: rgb(46, 44, 44);
-  color: $color-text;
+  // outline: 1px solid var(--color-outline);
+  background-color: var(--color-bg-primary);
+  color: var(--color-text);
   border-radius: $radius;
   align-items: center;
 
@@ -29,14 +24,14 @@ $global-padding: 2px;
     width: 1px;
     height: 100%;
     flex: 0 0 auto;
-    background-color: $color-outline;
+    background-color: var(--color-outline);
   }
 
   .tab-swtich__separator-vertical {
     width: 100%;
     height: 1px;
     flex: 0 0 auto;
-    background-color: $color-outline;
+    background-color: var(--color-outline);
   }
   &.tab-switch-horizontal {
     flex-direction: row;
@@ -46,7 +41,7 @@ $global-padding: 2px;
     flex-direction: column;
   }
   .tab-swtich__option {
-    background-color: $color-background;
+    background-color: var(--color-background);
     border-radius: $radius;
     padding: 8px;
     height: 100%;
@@ -59,7 +54,7 @@ $global-padding: 2px;
     white-space: nowrap;
 
     &.tab-swtich__option-selected {
-      background-color: $color-selected;
+      background-color: var(--color-selected);
     }
   }
 }

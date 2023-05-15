@@ -8,7 +8,11 @@ const meta = {
   argTypes: {
     type: {
       options: ["vertical", "horizontal"],
-      control: { type: "radio" },
+      control: { type: "select" },
+    },
+    theme: {
+      options: ["light", "dark"],
+      control: { type: "select" },
     },
   }, // ???
 } satisfies Meta<typeof TabSwitch>;
@@ -20,6 +24,8 @@ const Primary: Story = {
     options: ["option 1", "option 2"],
     type: "horizontal" satisfies TabSwitchType,
     width: "min-content",
+    theme: "dark",
+    onOptionSwitch: (option) => console.log(option),
   },
 };
 
