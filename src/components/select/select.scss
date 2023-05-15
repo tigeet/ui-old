@@ -1,0 +1,87 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+}
+
+.select {
+  width: 200px;
+  height: auto;
+  gap: 8px;
+  display: flex;
+  flex-direction: column;
+
+  .select__header {
+    outline: 1px solid rgb(230, 216, 216);
+    padding: 8px;
+    position: relative;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    &:focus {
+      outline: 2px solid rgb(89, 121, 224);
+    }
+    .select__label {
+      font-size: 1.2em;
+      flex: 1 0 auto;
+    }
+
+    .select__selected-options {
+      display: flex;
+      flex-wrap: wrap;
+      overflow: hidden;
+      gap: 4px;
+    }
+
+    .select__controls {
+      display: flex;
+      gap: 4px;
+
+      .select__control {
+        // width: 18px;
+        // height: 18px;
+        aspect-ratio: 1/1;
+        flex: 0 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
+
+  .select__options-wrapper {
+    position: relative;
+    width: 100%;
+    .select__options {
+      overflow: hidden;
+      border: 1px solid rgb(230, 216, 216);
+      border-radius: 4px;
+      left: 0;
+      // top: 12px;
+      // padding: 8px;
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+      position: absolute;
+      &.select__options-hidden {
+        visibility: hidden;
+        height: 0;
+      }
+
+      &.select__options-visible {
+        visibility: visible;
+        height: auto;
+      }
+
+      .select__option {
+        padding: 8px;
+        &.select__option-selected {
+          background-color: rgba(233, 220, 220, 0.432);
+        }
+      }
+    }
+  }
+}
