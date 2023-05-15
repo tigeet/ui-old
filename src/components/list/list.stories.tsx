@@ -3,7 +3,7 @@ import React from "react";
 import List from "./list";
 import { Figma, Facebook, Globe } from "react-feather";
 import ListItem from "../listItem/listItem";
-import { withSelect } from "@/figmaUtils/withSelect";
+import { withSelect } from "@/storybookUtils/withSelect";
 
 const meta = {
   title: "List",
