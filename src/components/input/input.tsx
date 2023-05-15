@@ -1,9 +1,12 @@
-import React, { useEffect, useRef } from "react";
-import { cls } from "@koido/cls/dist/cls";
+import React from "react";
+import { cls } from "@koido/cls";
 import "./input.scss";
-import { Search } from "react-feather";
-
-type Theme = "light" | "dark";
+import { Icon } from "react-feather";
+import { Dark, Light } from "@/colors";
+import { Theme } from "@/types";
+const mapThemeToColor = (theme: Theme): string => {
+  return theme === "light" ? Light.colorSecondary : Dark.colorSecondary;
+};
 type FocusType = "underline" | "none" | "outline";
 type InputProps = {
   className?: string;
@@ -18,8 +21,8 @@ type InputProps = {
   placeholder?: string;
   theme?: Theme;
   onSubmit?: (value: string) => void;
-  preIcon?: (theme: Theme) => React.ReactNode;
-  postIcon?: (theme: Theme) => React.ReactNode;
+  PreIcon?: Icon;
+  PostIcon?: Icon;
 };
 const Input = ({
   className,
@@ -33,8 +36,8 @@ const Input = ({
   type = "text",
   placeholder = "",
   onSubmit,
-  preIcon,
-  postIcon,
+  PreIcon,
+  PostIcon,
 }: InputProps) => {
   const handleBlur = (e: React.FocusEvent) => {
     if (e.currentTarget.contains(e.relatedTarget)) return;
@@ -47,12 +50,11 @@ const Input = ({
     onValueChange?.(e.target.value ?? "");
   const handleSubmit = (e: React.ChangeEvent<HTMLInputElement>) =>
     onSubmit?.(e.target.value ?? "");
-  const hasPreIcon = Boolean(preIcon);
-  const hasPostIcon = Boolean(postIcon);
+  const hasPreIcon = PreIcon !== undefined;
+  const hasPostIcon = PostIcon !== undefined;
   const displayIcon = hasPreIcon || hasPostIcon;
   return (
     <div
-      // className="input"
       className={cls("input", className, {
         "input-focused": focused,
         "focus-outline": focusType === "outline",
@@ -70,7 +72,7 @@ const Input = ({
       >
         {hasPreIcon && (
           <div className="input__icon input__icon-pre">
-            {preIcon && preIcon(theme)}
+            {<PreIcon size={16} color={mapThemeToColor(theme)} />}
           </div>
         )}
         <input
@@ -86,7 +88,7 @@ const Input = ({
         />
         {hasPostIcon && (
           <div className="input__icon input__icon-post">
-            {postIcon && postIcon(theme)}
+            {<PostIcon size={16} color={mapThemeToColor(theme)} />}
           </div>
         )}
       </section>

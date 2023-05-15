@@ -15,6 +15,12 @@ const meta = {
       options: ["none", "underline", "outline"],
       control: { type: "select" },
     },
+    PreIcon: {
+      control: false,
+    },
+    PostIcon: {
+      control: false,
+    },
   },
 } satisfies Meta<typeof Input>;
 
@@ -31,18 +37,8 @@ const DevStateful = (args) => {
       placeholder="Input"
       focused={focused}
       toggleFocused={() => setFocused((state) => !state)}
-      preIcon={(theme) => (
-        <Search
-          size={16}
-          color={theme == "light" ? "rgb(125, 129, 136)" : "rgb(154, 160, 166)"}
-        />
-      )}
-      postIcon={(theme) => (
-        <X
-          size={16}
-          color={theme == "light" ? "rgb(125, 129, 136)" : "rgb(154, 160, 166)"}
-        />
-      )}
+      PreIcon={Search}
+      PostIcon={X}
       {...args}
     />
   );
