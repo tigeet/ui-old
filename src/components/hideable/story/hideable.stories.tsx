@@ -19,92 +19,6 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 type Args = Story["args"];
-const Visible = {
-  args: {
-    value: "qwerty1234",
-    visible: true,
-    theme: "light",
-    toggleVisible: () => {
-      null;
-    },
-  },
-} satisfies Story;
-
-const Hidden = {
-  args: {
-    value: "password1234",
-    visible: false,
-    theme: "light",
-    toggleVisible: () => {
-      null;
-    },
-  },
-} satisfies Story;
-
-const WithVisibilitySwitch = {
-  args: {
-    value: "qwerty1234",
-    visible: true,
-    theme: "light",
-    toggleVisible: () => {
-      null;
-    },
-  },
-} satisfies Story;
-
-const WithoutVisibilitySwitch = {
-  args: {
-    value: "qwerty1234",
-    visible: true,
-    theme: "light",
-  },
-} satisfies Story;
-
-const Light = {
-  args: {
-    value: "password1234",
-    visible: true,
-    theme: "light",
-    toggleVisible: () => {
-      null;
-    },
-  },
-} satisfies Story;
-
-const Dark = {
-  args: {
-    value: "password1234",
-    visible: true,
-    theme: "dark",
-    toggleVisible: () => {
-      null;
-    },
-  },
-} satisfies Story;
-
-const Focused = {
-  args: {
-    value: "password1234",
-    visible: true,
-    focused: true,
-    theme: "light",
-    toggleVisible: () => {
-      null;
-    },
-  },
-} satisfies Story;
-
-const Unfocused = {
-  args: {
-    value: "password1234",
-    visible: true,
-    focused: false,
-    theme: "light",
-    toggleVisible: () => {
-      null;
-    },
-  },
-} satisfies Story;
 
 const Stateful = (args: Partial<Args>) => {
   const [value, setValue] = useState<string>("");
@@ -129,18 +43,9 @@ const Dev = {
   args: {
     theme: "light",
     placeholder: "Password",
+    focusType: "underline",
   } satisfies Partial<Args> as Args,
   render: (args) => <Stateful {...args} />,
 } satisfies Story;
 
-export {
-  Visible,
-  Hidden,
-  WithVisibilitySwitch,
-  WithoutVisibilitySwitch,
-  Light,
-  Dark,
-  Focused,
-  Unfocused,
-  Dev,
-};
+export { Dev };
