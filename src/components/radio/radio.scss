@@ -1,0 +1,21 @@
+.radio {
+  display: flex;
+  border-radius: 10000px;
+
+  background-color: var(--color-bg-primary);
+  .radio__placeholder {
+    // flex: ;
+    flex: 0 0 auto;
+    transition: flex 0.2s ease;
+    &.radio__placeholder-expanded {
+      flex: 1 0 auto;
+    }
+  }
+  .radio__toggle {
+    flex: 0 0 auto;
+    aspect-ratio: 1/1;
+    height: 100%;
+    border-radius: 50%;
+    background-color: var(--color-accent);
+  }
+}
