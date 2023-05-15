@@ -1,0 +1,40 @@
+.list-item {
+  $pad-v: 4px;
+  $pad-h: 12px;
+  $border-radius: 4px;
+  padding: $pad-v $pad-h;
+  gap: $pad-h;
+  // border-radius: 4px;
+  background-color: var(--color-bg);
+  border: 1px solid transparent;
+  &.list-item-rounded-top {
+    border-radius: $border-radius $border-radius 0 0;
+  }
+
+  &.list-item-rounded-bottom {
+    border-radius: 0 0 $border-radius $border-radius;
+  }
+
+  &.list-item-rounded-all {
+    border-radius: $border-radius;
+  }
+
+  &.list-item-fill:hover {
+    background-color: var(--color-hover);
+  }
+
+  &.list-item-outline:hover {
+    border: 1px solid var(--color-accent);
+  }
+
+  .list-item__value {
+    color: var(--color-primary);
+    flex: 1 1 auto;
+  }
+
+  .list-item__icon {
+    flex: 0 0 auto;
+    width: 16px;
+    height: 16px;
+  }
+}
