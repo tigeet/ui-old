@@ -1,0 +1,40 @@
+.icon {
+  aspect-ratio: 1/1;
+  background-color: var(--color-bg);
+  overflow: hidden;
+
+  .icon__content {
+    max-width: 100%;
+    min-width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: contain;
+  }
+}
+
+.icon {
+  &.icon-small {
+    height: 24px;
+  }
+
+  &.icon-medium {
+    height: 48px;
+  }
+
+  &.icon-large {
+    height: 64px;
+  }
+}
+
+.icon {
+  &.icon-square {
+    border-radius: 0;
+  }
+
+  &.icon-circle {
+    border-radius: 10000px;
+  }
+
+  &.icon-rounded {
+    border-radius: 4px;
+  }
+}
