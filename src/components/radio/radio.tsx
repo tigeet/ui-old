@@ -8,11 +8,11 @@ type RadioProps = {
   size: Size;
 };
 
-const Radio = ({ theme = "light" }: RadioProps) => {
+const Radio = ({ theme = "light", size }: RadioProps) => {
   const [on, setOn] = useState<boolean>(false);
   return (
     <div
-      className="radio"
+      className={cls("radio", `radio-${size}`)}
       onClick={() => setOn((state) => !state)}
       data-theme={theme}
     >
