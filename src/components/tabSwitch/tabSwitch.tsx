@@ -2,7 +2,7 @@ import React from "react";
 import "./tabSwitch.scss";
 import useTabSwitch from "./useTabSwitch";
 import { Options, Theme } from "./types";
-import { Prettier } from "../../typeUtils";
+import { Prettier } from "../../utils/typeUtils";
 
 // Layout orientation of the tabSwitch, default to horizontal;
 type TabSwitchType = "horizontal" | "vertical";
