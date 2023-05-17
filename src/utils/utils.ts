@@ -9,7 +9,7 @@ type KvModifier = {
   value: string;
 };
 type Modifier = BoolModifier | KvModifier;
-type AcceptableArgs = null | undefined | string | Modifier;
+type AcceptableArgs = null | undefined | string | Modifier[];
 type MakeClassnameProps = {
   global: string;
   local?: string;
