@@ -1,8 +1,17 @@
 .radio {
   display: flex;
   border-radius: 10000px;
-
-  background-color: var(--color-bg-primary);
+  background-color: var(--color-bg);
+  aspect-ratio: 21/9;
+  &.radio-small {
+    height: 16px;
+  }
+  &.radio-medium {
+    height: 24px;
+  }
+  &.radio-large {
+    height: 32px;
+  }
   .radio__placeholder {
     // flex: ;
     flex: 0 0 auto;
