@@ -21,7 +21,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 const Primary: Story = {
   args: {
-    options: ["option 1", "option 2"],
+    options: ["option 1", "option 2", "opt3"],
     type: "horizontal" satisfies TabSwitchType,
     width: "min-content",
     theme: "dark",
