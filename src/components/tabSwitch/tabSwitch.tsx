@@ -1,8 +1,9 @@
 import React from "react";
 import "./tabSwitch.scss";
 import useTabSwitch from "./useTabSwitch";
-import { Options, Theme } from "./types";
+import { Options } from "./types";
 import { Prettier } from "../../typeUtils";
+import { Theme } from "@/types";
 
 // Layout orientation of the tabSwitch, default to horizontal;
 type TabSwitchType = "horizontal" | "vertical";
@@ -51,23 +52,18 @@ const TabSwitch = ({
       style={buildStyles({ width: width, height: height })}
       data-theme={theme}
     >
-      {options.map((option, i) => (
-        <>
-          <p
-            className={[
-              "tab-swtich__option",
-              `tab-swtich__option-${type}`,
-              selected === i ? "tab-swtich__option-selected" : "",
-            ].join(" ")}
-            key={i}
-            onClick={() => handleSelectOption(option)}
-          >
-            {option}
-          </p>
-          {/* {i < options.length - 1 && (
-            <div className={`tab-swtich__separator-${type}`} />
-          )} */}
-        </>
+      {options.map((option: string, i) => (
+        <p
+          className={[
+            "tab-swtich__option",
+            `tab-swtich__option-${type}`,
+            selected === i ? "tab-swtich__option-selected" : "",
+          ].join(" ")}
+          key={i}
+          onClick={() => handleSelectOption(option)}
+        >
+          {option}
+        </p>
       ))}
     </div>
   );
