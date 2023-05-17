@@ -25,3 +25,13 @@ dist-ssr
 
 package-lock.json
 
+# media assets
+*.jpg
+*.jpeg
+*.png
+*.webp
+*.webm
+*.jfif
+*.gif
+*.mp4
+*.mov
