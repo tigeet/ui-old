@@ -9,7 +9,7 @@ type KvModifier = {
   value: string;
 };
 type Modifier = BoolModifier | KvModifier;
-type AcceptableArgs = undefined | string | Modifier;
+type AcceptableArgs = null | undefined | string | Modifier;
 type MakeClassnameProps = {
   global: string;
   local?: string;
@@ -56,6 +56,6 @@ const adapter = (
   throw new Error("Invalid signature");
 };
 const withClassname =
-  (global: string) => (arg1: AcceptableArgs, arg2: AcceptableArgs) =>
+  (global: string) => (arg1?: AcceptableArgs, arg2?: AcceptableArgs) =>
     adapter(global, arg1, arg2);
 export { withClassname };
