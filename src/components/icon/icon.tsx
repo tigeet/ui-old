@@ -3,14 +3,17 @@ import React from "react";
 import "./icon.scss";
 import { Color } from "@/colors";
 import { cls } from "@koido/cls";
+import { Size, Theme } from "@/types";
 
 type FocusType = "backdrop" | "none";
-
+type Shape = "square" | "circle" | "rounded";
 type IconProps = {
   className?: string;
-  size: number;
+  shape?: Shape;
+  size?: Size;
   focusType?: FocusType;
   focusColor?: Color;
+  theme?: Theme;
   focused?: boolean;
   backdropRadius?: number;
   onClick?: () => void;
@@ -19,11 +22,13 @@ type IconProps = {
 
 const Icon = ({
   className,
-  size,
+  shape = "rounded",
+  size = "medium",
   focusType = "none",
+  theme = "light",
   focusColor = "transparent",
   backdropRadius,
-  focused,
+  focused = false,
   Content,
 }: IconProps) => {
   const hasContent = Content !== undefined;
@@ -31,12 +36,14 @@ const Icon = ({
     <div
       className={cls(
         "icon",
+        className,
         "centered",
+        `icon-${size}`,
+        `icon-${shape}`,
         focused && "icon-focused",
-        `icon-focus-${focusType}`,
-        className
+        `icon-focus-${focusType}`
       )}
-      data-size={size}
+      data-theme={theme}
       {...(focusColor && { "data-focus-color": focusColor })}
       {...(backdropRadius && { "data-backdrop-radius": backdropRadius })}
       // data-focus-color={focusColor}
