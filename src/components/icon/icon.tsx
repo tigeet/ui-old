@@ -17,7 +17,7 @@ type IconProps = {
   focused?: boolean;
   backdropRadius?: number;
   onClick?: () => void;
-  Content?: React.FunctionComponent;
+  Content?: React.FunctionComponent | string;
 };
 
 const Icon = ({
@@ -32,6 +32,7 @@ const Icon = ({
   Content,
 }: IconProps) => {
   const hasContent = Content !== undefined;
+  const contentType = typeof Content === "string" ? "src" : "component";
   return (
     <div
       className={cls(
@@ -48,7 +49,15 @@ const Icon = ({
       {...(backdropRadius && { "data-backdrop-radius": backdropRadius })}
       // data-focus-color={focusColor}
     >
-      {hasContent && <Content />}
+      {hasContent &&
+        (contentType === "component" ? (
+          <Content />
+        ) : contentType === "src" ? (
+          <img
+            className="icon__with-src icon__content"
+            src={Content as string}
+          />
+        ) : null)}
     </div>
   );
 };
