@@ -5,13 +5,15 @@
   --color-bg: rgb(49, 41, 41);
   --color-accent: rgb(2, 156, 253);
   --color-hover: rgb(68, 59, 59);
+  --color-bg-secondary: rgb(54, 45, 45);
 }
 
 [data-theme="light"] {
   --color-primary: #302d2d;
   --color-secondary: rgb(101, 106, 110);
   --color-disabled: rgb(125, 129, 136);
-  --color-bg: rgb(236, 226, 226);
+  --color-bg: rgb(245, 239, 239);
   --color-accent: rgb(2, 111, 253);
-  --color-hover: rgb(177, 168, 168);
+  --color-hover: rgb(216, 207, 207);
+  --color-bg-secondary: rgb(238, 229, 229);
 }
